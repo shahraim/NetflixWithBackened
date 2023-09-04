@@ -3,49 +3,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
-const port = 6246;
-
+const port = 2000; // Use PORT from environment or default to 2000
+const router = require('./Router/AuthRoutes');
 app.use(cors());
 app.use(express.json());
-
-app.get("/", async (req, res) => {
-  return res.status(200).json({ message: "Hello WOrld", status: 200 });
-});
-
-app.post("/", async (req, res) => {
-  const { email } = req.body;
-
-  try {
-    const existingUser = await User.findOne({ email });
-
-    if (existingUser) {
-      res.status(500).json({ message: "Email already registered" });
-    } else {
-      res.status(200).json({ message: "Sign Up Complete" });
-    }
-  } catch (err) {
-    res.status(500).json({ message: "An error occurred" });
-  }
-});
-// Define the user schema
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true, // Ensure email is unique
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-});
-
-const User = mongoose.model("Users", userSchema);
-
+app.use(router);
 // Connect to the MongoDB database
 const DATABASE_URL = process.env.DATABASE_URL;
 
@@ -63,5 +25,5 @@ database.once("open", () => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });

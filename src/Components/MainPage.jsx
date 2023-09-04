@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import LogoImg from "../assets/imgs/net.png";
 import MainPageBottom from "./MainPageBottom";
 import Footer from "./Footer";
+import { ArrowRight } from 'lucide-react';
 
 function MainPage() {
   return (
@@ -25,7 +26,7 @@ function MainPage() {
             </p>
             <div>
               <input type="email" placeholder="Email address" />
-              <button>Get Started &rarr; </button>
+              <button className="flex gap-3 items-center text-xl">Get Started <ArrowRight /> </button>
             </div>
           </div>
         </div>

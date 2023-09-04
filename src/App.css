@@ -1,17 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@800&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Netflix Font", sans-serif;
+  /* font-family: "Netflix Font", sans-serif; */
+  font-family: 'Poppins', sans-serif;
+  /* overflow-x: hidden; */
   /* font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif; */
 }
+
 .App::before {
   background-color: rgb(54, 49, 49);
 }
+
 /* mainpage css */
-.btnClr:hover {
-  background: rgb(193, 17, 25) !important ;
+.btn-play {
+  border: none;
+  width: 150px;
 }
+
+.btn-detail {
+  border: none;
+  width: 180px;
+  background-color: transparent !important;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btnClr:hover {
+  background: rgb(193, 17, 25) !important;
+}
+
 .backContainer {
   position: relative;
   height: 100vh;
@@ -28,6 +55,7 @@
   height: 100%;
   z-index: -1;
 }
+
 .overlay {
   position: absolute;
   top: 0;
@@ -37,6 +65,7 @@
   background-color: rgba(0, 0, 0, 0.6);
   z-index: -1;
 }
+
 .secEdit {
   display: flex;
   height: 90%;
@@ -45,51 +74,58 @@
   align-items: center;
   flex-wrap: wrap;
 }
+
 .secEdit h1 {
   font-size: 49px;
   font-weight: 700;
 }
-.secEdit > p {
+
+.secEdit>p {
   font-size: 25px;
   /* font-weight: 500; */
 }
+
 .emailSec {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.emailSec > p {
-  font-size: 20px;
+
+.emailSec>p {
+  font-size: 15px;
   font-weight: 500;
 }
+
 .emailSec div {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .emailSec div input {
   width: 60%;
   background-color: rgba(0, 0, 0, 0.6);
-  /* height: 70px; */
   padding: 15px 25px;
   color: white;
   margin-right: 10px;
   border: 1px solid rgb(193, 17, 25);
 }
+
 .emailSec div button {
   color: #fff;
   background: #e50914;
   color: white;
-  font-size: 25px;
-  font-weight: bolder;
+  /* font-size: 25px; */
+  font-weight: 600;
   border: #e50914;
   border-radius: 5px;
-  padding: 10px 15px;
+  padding: 15px 15px;
   text-decoration: none;
+
   &:hover {
-    background: rgb(193, 17, 25) !important ;
+    background: rgb(193, 17, 25) !important;
   }
 }
 
@@ -100,10 +136,12 @@
   height: auto;
   overflow: hidden;
 }
+
 .sec {
   background-color: black;
   /* margin-top: 10px; */
 }
+
 .sec2 {
   display: flex;
   justify-content: center;
@@ -121,6 +159,7 @@
   background-color: rgb(54, 49, 49);
   bottom: 0;
 }
+
 .box1,
 .box2 {
   flex-basis: 50%;
@@ -160,10 +199,12 @@
   height: 100%;
   z-index: 1;
 }
+
 .box1 h1 {
   font-size: 50px;
   font-weight: bolder;
 }
+
 .box1 p {
   font-size: 24px;
   margin-top: 15px;
@@ -181,15 +222,18 @@
   text-align: center;
   padding: 50px 0;
 }
+
 .accord .DifBox h1 {
   font-size: 45px;
   font-weight: 800;
   margin-bottom: 30px;
 }
+
 .accord .accordion {
   text-align: left;
   border: none !important;
 }
+
 .accordion-button {
   background-color: rgb(59, 57, 57) !important;
   color: #fff !important;
@@ -199,6 +243,7 @@
     box-shadow: none !important;
   }
 }
+
 .gape {
   margin-bottom: 10px;
 }
@@ -216,35 +261,43 @@
   background-color: black;
   color: #fff;
 }
+
 .footer .footerBox {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
 }
+
 .footerBox ul li {
   list-style: none;
   padding: 5px 0;
   font-size: 15px;
 }
+
 .footerBox ul li a {
   color: rgb(158, 153, 153);
 }
+
 .footer p {
   margin-bottom: 40px;
 }
+
 .footer p a {
   color: rgb(158, 153, 153);
 }
+
 .selectArea select {
   background-color: rgb(29, 26, 26);
   color: #fff;
   padding: 5px 10px;
   margin: 20px 0;
 }
+
 .selectArea p {
   color: #e50914;
 }
+
 .selectArea P span {
   color: gray;
 }
@@ -290,19 +343,24 @@
 .login button:hover {
   background-color: #b2070f;
 }
+
 .login .signupButton {
   text-decoration: none;
 }
+
 .login small {
   color: white;
 }
+
 .login small .span1 {
   color: #8c8c8c;
 }
+
 .login small .span2:hover {
   text-decoration: underline;
   font-size: 15px;
 }
+
 .login .input-container {
   position: relative;
   margin: 0 0 25px 0;
@@ -317,8 +375,8 @@
   transition: all 0.3s ease;
 }
 
-.login .input-container input:focus + label,
-.login .input-container input:valid + label {
+.login .input-container input:focus+label,
+.login .input-container input:valid+label {
   transform: translateY(-100%) scale(0.8);
   color: #8c8c8c;
 }
@@ -333,11 +391,13 @@
   color: white;
   transition: background-color 0.3s ease;
 }
+
 .backContainerLog .navLog {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .backContainerLog .navLog .btnBack {
   text-decoration: none;
   margin-right: 30px;
@@ -349,11 +409,13 @@
   border-radius: 50%;
   border: 2px solid #fff;
 }
+
 /* background for login or signup  */
 .backContainerLog {
   position: relative;
   color: white;
 }
+
 .backContainerLog::before {
   background: url(./assets/imgs/background.jpg) no-repeat top center fixed;
   background-size: cover;
@@ -365,6 +427,7 @@
   height: 100vh;
   z-index: -1;
 }
+
 .overlayLog {
   position: absolute;
   top: 0;
@@ -376,28 +439,110 @@
 }
 
 @media screen and (max-width: 1250px) {
+
   .container {
     width: 100%;
   }
+
   .box1 {
     flex-basis: 100%;
     flex-grow: 1;
   }
+
   .box1 h1,
   .box1 p {
     text-align: center;
   }
+
   .footer {
     padding: 50px 100px;
   }
 }
+
 @media screen and (max-width: 650px) {
+  .gradient-overlay {
+    width: 100%;
+  }
+
   .footer {
     padding: 50px 50px;
   }
+
   .footerBox ul {
     flex-basis: 100%;
     margin-bottom: 30px;
     border-bottom: 1px solid gray;
   }
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: rgb(193, 17, 25) #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(166, 167, 165);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(193, 17, 25);
+  border-radius: 10px;
+  border: 3px solid rgb(166, 167, 165);
+}
+
+/* MoviePage.css */
+
+/* Set full viewport height */
+.movie-page {
+  height: 99vh;
+  width: 100%;
+  overflow: hidden;
+  margin-right: 0;
+  position: relative;
+}
+
+/* Gradient overlay */
+.gradient-overlay {
+  position: absolute;
+  top: 20%;
+  left: 20px;
+  margin-right: 40px;
+}
+
+/* Pure CSS equivalent of the provided Tailwind CSS */
+.movie-poster {
+  color: #fff;
+}
+
+.movie-poster>h1 {
+  font-size: 49px;
+  font-weight: 600;
+}
+
+.model-bg {
+  background: #181818;
+}
+
+/* Add this to your CSS */
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* movie cards000 */
+
+.movie-title {
+  font-family: 'Merienda', cursive;
 }
