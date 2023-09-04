@@ -83,7 +83,7 @@ const Videos = () => {
                 ))}
               </div>
 
-              <h1 className="text-6xl font-bold movie-title">{movie.title}</h1>
+              <h1 className="text-6xl font-bold movie-title py-2 overflow-hidden">{movie.title}</h1>
               <div className="flex gap-3 flex-wrap">
                 <div className="flex items-center justify-center gap-2">
                   <CalendarDays className="w-5 h-5" color="#E50914" />
@@ -116,7 +116,8 @@ const Videos = () => {
         </div>
       </div>
 
-      <Slider />
+      {/* <Slider /> */}
+      <MovieCards />
 
 
     </>

@@ -1,37 +1,37 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Slider from 'react-slick';
-import LogoImg from "../assets/imgs/net.png";
-import './Slider.css'
+import './Slider.css';
 
 const MovieCards = () => {
-    const [movie, setMovie] = useState(null);
+    const [movies, setMovies] = useState([]);
+    const [hoveredIndexes, setHoveredIndexes] = useState([]);
+    const currentSlideRef = useRef(null);
 
     useEffect(() => {
         const apiKey = "ca258fa0adb338022b74848eb9dade0a"; // Replace with your API key
-        const movieId = 630004;
-        const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`;
-        axios
-            .get(url)
+        const randomPage = Math.floor(Math.random() * 100); // Get a random page (adjust the range as needed)
+        const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=${randomPage}&sort_by=popularity.desc`;
+
+        axios.get(url)
             .then((response) => {
-                setMovie(response.data);
+                setMovies(response.data.results);
+                // Initialize the hover state for each movie card to false
+                setHoveredIndexes(Array(response.data.results.length).fill(false));
+                console.log(response.data.results)
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
             });
     }, []);
 
-    if (!movie) {
-        return <div>Loading...</div>; // Show a loading message while fetching data
-    }
-
     const settings = {
         dots: false,
         infinite: false,
         speed: 1000,
         adaptiveHeight: true,
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: 4,
+        slidesToScroll: 4,
         responsive: [
             {
                 breakpoint: 1024,
@@ -49,35 +49,50 @@ const MovieCards = () => {
             },
         ],
     };
-    // {Array(6)
-    //     .fill()
-    //     .map((_, index) => (
-    //         <div key={index} className="px-3 cursor-pointer relative">
-    //             <img
-    //                 src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-    //                 alt={`Slide ${index + 1}`}
-    //                 className="transition-transform transform scale-100 hover:scale-150"
-    //             />
-    //         </div>
-    //     ))}
+
+    const handleMouseEnter = (index) => {
+        // Update the hover state for the specific movie card
+        const newHoveredIndexes = [...hoveredIndexes];
+        newHoveredIndexes[index] = true;
+        setHoveredIndexes(newHoveredIndexes);
+    };
+
+    const handleMouseLeave = (index) => {
+        // Update the hover state for the specific movie card
+        const newHoveredIndexes = [...hoveredIndexes];
+        newHoveredIndexes[index] = false;
+        setHoveredIndexes(newHoveredIndexes);
+    };
+
     return (
-        <div className="w-full h-auto max-w-screen-xl mx-auto p-4 slider">
-            <Slider {...settings}>
-                <ul className="items">
-                    <li>
-                        <div
-                            className="bg-img"
-                            style={{
-                                backgroundImage:
-                                    'url("http://lewihussey.com/codepen-img/orangeisthenewblack.jpg")'
-                            }}
+        <div className="">
+            <Slider {...settings} ref={currentSlideRef}>
+                {movies.map((movie, index) => (
+                    <figure
+                        key={index}
+                        className={`border border-gray-700 snip1577 rounded-xl shadow-2xl ${hoveredIndexes[index] ? 'hover' : ''}`}
+                        onMouseEnter={() => handleMouseEnter(index)}
+                        onMouseLeave={() => handleMouseLeave(index)}
+                    >
+                        <img
+                            src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                            alt={`Slide ${index + 1}`}
                         />
-                        <a href="#">
-                            <div className="content">
+                        <figcaption>
+                            <h3 className='overflow-hidden'>{movie.title}</h3>
+                            <div className="flex gap-1 items-center h4">
+                                <div className="flex items-center justify-center gap-2">
+                                    <img className='opacity-100' width="30" height="30" src="https://img.icons8.com/color/30/imdb.png" alt="imdb" />
+                                </div>
+                                <div className="flex items-center justify-center gap-2">
+                                    <span className="text-sm font-normal  overflow-hidden">{movie.vote_average.toFixed(1)} / 10</span>
+                                </div>
                             </div>
-                        </a>
-                    </li>
-                </ul>
+
+                        </figcaption>
+                        <a href="#" />
+                    </figure>
+                ))}
             </Slider>
         </div>
     );
