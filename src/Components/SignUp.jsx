@@ -7,9 +7,9 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { useNavigate } from "react-router-dom";
 
 function SignUp() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [forumError, setForumError] = useState("");
   const navigate = useNavigate();
 
@@ -30,9 +30,9 @@ function SignUp() {
       })
       .catch((err) => {
         if (err.response && err.response.status === 400) {
-          toast.error('Email Already Exist');
-        } else if (err.message === 'Network Error') {
-          toast.error('Network Error');
+          toast.error("Email Already Exist");
+        } else if (err.message === "Network Error") {
+          toast.error("Network Error");
         } else {
           console.error("Error", err);
         }
@@ -49,7 +49,7 @@ function SignUp() {
         <img src={LogoImg} alt="logo" style={logoStyle} />
       </div>
       <div className="loginMain">
-        <div className="login">
+        <div className="login signup">
           <h1 style={{ color: "white", textAlign: "left" }}>Sign Up</h1>
           <form onSubmit={handleSubmit}>
             <div className="input-container">
@@ -95,7 +95,7 @@ function SignUp() {
               </p>
             </div>
             <button className="btn btn-primary" type="submit">
-              {btnloading ? <ClipLoader size={20} color='#fff' /> : 'Sign up'}
+              {btnloading ? <ClipLoader size={20} color="#fff" /> : "Sign up"}
             </button>
             <br />
             <br />

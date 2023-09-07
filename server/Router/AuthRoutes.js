@@ -1,7 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Usermodels = require('../Models')
+const Usermodels = require('../Models'); // Make sure the import path is correct
 const router = express.Router();
+
 // Register
 router.post("/register", async (req, res) => {
     const { name, email, password } = req.body;
@@ -13,7 +14,7 @@ router.post("/register", async (req, res) => {
             return res.status(400).json({ success: false, message: "Email already registered" });
         }
 
-        const newUser = new User({ name, email, password });
+        const newUser = new Usermodels({ name, email, password }); // Use Usermodels here
         await newUser.save();
 
         res.status(200).json({ success: true, message: "Sign Up Complete" });
@@ -22,12 +23,13 @@ router.post("/register", async (req, res) => {
         res.status(500).json({ success: false, message: "An error occurred" });
     }
 });
+
 // Login
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await Usermodels.findOne({ email, password });
+        const user = await Usermodels.findOne({ email, password }); // Use Usermodels here
 
         if (user) {
             res.status(200).json({ message: 'Login successful' });

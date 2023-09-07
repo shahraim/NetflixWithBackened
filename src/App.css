@@ -336,7 +336,7 @@
   width: 100%;
   padding: 10px 20px;
   border-radius: 4px;
-  margin-top: 25px;
+  margin-top: 10px;
   cursor: pointer;
 }
 
@@ -370,13 +370,27 @@
   position: absolute;
   top: 40%;
   left: 10px;
-  transform: translateY(-40%);
+  transform: translateY(-55%);
   color: #8c8c8c;
   transition: all 0.3s ease;
 }
 
 .login .input-container input:focus+label,
 .login .input-container input:valid+label {
+  transform: translateY(-120%) scale(0.8);
+  color: #8c8c8c;
+}
+.signup .input-container label {
+  position: absolute;
+  top: 40%;
+  left: 10px;
+  transform: translateY(-55%);
+  color: #8c8c8c;
+  transition: all 0.3s ease;
+}
+
+.signup .input-container input:focus+label,
+.signup .input-container input:valid+label {
   transform: translateY(-100%) scale(0.8);
   color: #8c8c8c;
 }
@@ -411,10 +425,10 @@
 }
 
 /* background for login or signup  */
-.backContainerLog {
+/* .backContainerLog {
   position: relative;
   color: white;
-}
+} */
 
 .backContainerLog::before {
   background: url(./assets/imgs/background.jpg) no-repeat top center fixed;
@@ -545,4 +559,7 @@
 
 .movie-title {
   font-family: 'Merienda', cursive;
+}
+h1,h2,h3,h4{
+  overflow: hidden;
 }

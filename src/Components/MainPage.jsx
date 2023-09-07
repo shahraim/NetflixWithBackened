@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import LogoImg from "../assets/imgs/net.png";
 import MainPageBottom from "./MainPageBottom";
 import Footer from "./Footer";
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight } from "lucide-react";
 
 function MainPage() {
   return (
@@ -26,7 +26,9 @@ function MainPage() {
             </p>
             <div>
               <input type="email" placeholder="Email address" />
-              <button className="flex gap-3 items-center text-xl">Get Started <ArrowRight /> </button>
+              <button className="flex gap-3 items-center text-xl">
+                Get Started <ArrowRight />{" "}
+              </button>
             </div>
           </div>
         </div>
@@ -51,6 +53,7 @@ const buttonStyle = {
 const MainPageStyle = {
   height: "100%",
   padding: "0 20px",
+  overflow: "hidden",
 };
 
 const logoStyle = {
