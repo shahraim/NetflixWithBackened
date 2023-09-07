@@ -9,7 +9,7 @@ function MainPage() {
   return (
     <div className="backContainer">
       <div className="overlay"></div>
-      <div className="container" style={MainPageStyle}>
+      <div className="container overflow-y-hidden" style={MainPageStyle}>
         <div style={navsetStyle}>
           <img src={LogoImg} alt="logo" style={logoStyle} />
           <Link to="/login" className="btnClr" style={buttonStyle}>
