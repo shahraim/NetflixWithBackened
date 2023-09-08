@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LogoImg from "../assets/imgs/net.png";
+import LogoImg from "../../assets/imgs/net.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -7,9 +7,9 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { useNavigate } from "react-router-dom";
 
 function SignUp() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [forumError, setForumError] = useState("");
   const navigate = useNavigate();
 
@@ -19,20 +19,21 @@ function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    const url = "http://localhost:2000/register";
+    const url = "http://localhost:3001/register";
     console.log({ name, email, password });
 
     axios
       .post(url, { name, email, password })
       .then((res) => {
         console.log(res.data);
+        toast.success('User Registered Successfully');
         navigate("/login");
       })
       .catch((err) => {
         if (err.response && err.response.status === 400) {
-          toast.error("Email Already Exist");
-        } else if (err.message === "Network Error") {
-          toast.error("Network Error");
+          toast.error('Email Already Exist');
+        } else if (err.message === 'Network Error') {
+          toast.error('Network Error');
         } else {
           console.error("Error", err);
         }
@@ -45,64 +46,51 @@ function SignUp() {
   return (
     <div className="backContainerLog">
       <div className="overlayLog"></div>
-      <div>
+      <div className="navLog">
         <img src={LogoImg} alt="logo" style={logoStyle} />
+        <Link className="btnBack" to="/">
+          &rarr;
+        </Link>
       </div>
       <div className="loginMain">
-        <div className="login signup">
+        <div className="login">
           <h1 style={{ color: "white", textAlign: "left" }}>Sign Up</h1>
           <form onSubmit={handleSubmit}>
             <div className="input-container">
-              <input
-                type="text"
-                name="name"
-                id="name"
+              <input type="text" name="name" id="name" required
                 value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
+                onChange={(e) => setName(e.target.value)} />
               <label className="active" htmlFor="name">
                 Name
               </label>
+              <p></p>
             </div>
             <div className="input-container">
-              <input
-                type="email"
-                name="email"
-                id="email"
+              <input type="email" name="email" id="email" required
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+                onChange={(e) => setEmail(e.target.value)} />
               <label className="active" htmlFor="email">
                 Email
               </label>
+              <p></p>
             </div>
             <div className="input-container">
-              <input
-                type="password"
-                name="password"
-                id="password"
+              <input type="password" name="password" id="password" required
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+                onChange={(e) => setPassword(e.target.value)} />
               <label className="active" htmlFor="password">
                 Password
               </label>
-              <p>
-                <small>{forumError}</small>
-              </p>
+              <p></p>
             </div>
-            <button className="btn btn-primary" type="submit">
-              {btnloading ? <ClipLoader size={20} color="#fff" /> : "Sign up"}
-            </button>
-            <br />
+            <button className="btn btn-primary">
+              {btnloading ? <ClipLoader size={20} color='#fff' /> : 'Signup'}
+            </button> <br />
             <br />
             <Link to="/login" className="signupButton">
               <small>
-                <span className="span1">Already have an account? </span>{" "}
-                <span className="span2">Sign In Here!</span>
+                <span className="span1">New to Netflix? </span>{" "}
+                <span className="span2">Sign Up Here!</span>
               </small>
             </Link>
           </form>

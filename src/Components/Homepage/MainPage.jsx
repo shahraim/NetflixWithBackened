@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LogoImg from "../assets/imgs/net.png";
+import LogoImg from "../../assets/imgs/net.png";
 import MainPageBottom from "./MainPageBottom";
-import Footer from "./Footer";
-import { ArrowRight } from "lucide-react";
+import Footer from "../Footer/Footer";
+import { ArrowRight } from 'lucide-react';
 
 function MainPage() {
   return (
     <div className="backContainer">
       <div className="overlay"></div>
-      <div className="container overflow-y-hidden" style={MainPageStyle}>
+      <div className="container" style={MainPageStyle}>
         <div style={navsetStyle}>
           <img src={LogoImg} alt="logo" style={logoStyle} />
           <Link to="/login" className="btnClr" style={buttonStyle}>
@@ -25,10 +25,10 @@ function MainPage() {
               membership.
             </p>
             <div>
-              <input type="email" placeholder="Email address" />
-              <button className="flex gap-3 items-center text-xl">
-                Get Started <ArrowRight />{" "}
-              </button>
+              <div className="main-feilds">
+                <input type="email" placeholder="Email address" />
+                <button>Get Started <ArrowRight /></button>
+              </div>
             </div>
           </div>
         </div>
@@ -53,7 +53,6 @@ const buttonStyle = {
 const MainPageStyle = {
   height: "100%",
   padding: "0 20px",
-  overflow: "hidden",
 };
 
 const logoStyle = {

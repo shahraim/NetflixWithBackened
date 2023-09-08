@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Github } from 'lucide-react';
 function Footer() {
   return (
     <div className="footer">
@@ -55,18 +55,18 @@ function Footer() {
             <a href="#">Contact Us</a>
           </li>
           <li>
-            <a href="#">Only on Netflix</a>
+            <a href="#"> Only on Netflix</a>
           </li>
         </ul>
       </div>
       <div className="selectArea">
         <select name="language" id="english">
           <option value="english" selected>
-            English
+            <span>English</span>
           </option>
         </select>
         <p>
-          Netflix Pakistan correct or made by <span> @Shahraim Khan </span>
+          Netflix Pakistan correct or made by <a href="https://www.github.com/shahraim" target="blank"><span> <Github size={18} /></span> Shahraim Khan</a>
         </p>
       </div>
     </div>

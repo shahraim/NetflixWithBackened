@@ -1,8 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@800&display=swap');
 
 * {
   margin: 0;
@@ -10,17 +6,7 @@
   box-sizing: border-box;
   /* font-family: "Netflix Font", sans-serif; */
   font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
   /* font-family: Netflix Sans,Helvetica Neue,Segoe UI,Roboto,Ubuntu,sans-serif; */
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-y: hidden;
 }
 
 .App::before {
@@ -35,9 +21,11 @@ h6 {
 
 .btn-detail {
   border: none;
-  width: 180px;
+  width: 150px;
   background-color: transparent !important;
+  /* From https://css.glass */
   background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
@@ -85,12 +73,12 @@ h6 {
 }
 
 .secEdit h1 {
-  font-size: 49px;
+  font-size: 3.1rem;
   font-weight: 700;
 }
 
 .secEdit>p {
-  font-size: 25px;
+  font-size: 1.5rem;
   /* font-weight: 500; */
 }
 
@@ -102,8 +90,9 @@ h6 {
 }
 
 .emailSec>p {
-  font-size: 15px;
+  font-size: 1rem;
   font-weight: 500;
+  text-align: center;
 }
 
 .emailSec div {
@@ -116,6 +105,7 @@ h6 {
 .emailSec div input {
   width: 60%;
   background-color: rgba(0, 0, 0, 0.6);
+  /* height: 70px; */
   padding: 15px 25px;
   color: white;
   margin-right: 10px;
@@ -126,8 +116,8 @@ h6 {
   color: #fff;
   background: #e50914;
   color: white;
-  /* font-size: 25px; */
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: bolder;
   border: #e50914;
   border-radius: 5px;
   padding: 15px 15px;
@@ -208,6 +198,7 @@ h6 {
   height: 100%;
   z-index: 1;
 }
+
 
 .box1 h1 {
   font-size: 50px;
@@ -297,9 +288,11 @@ h6 {
 }
 
 .selectArea select {
+  width: 120px;
+  cursor: pointer;
   background-color: rgb(29, 26, 26);
   color: #fff;
-  padding: 5px 10px;
+  padding: 5px 20px;
   margin: 20px 0;
 }
 
@@ -345,7 +338,7 @@ h6 {
   width: 100%;
   padding: 10px 20px;
   border-radius: 4px;
-  margin-top: 10px;
+  margin-top: 25px;
   cursor: pointer;
 }
 
@@ -379,27 +372,13 @@ h6 {
   position: absolute;
   top: 40%;
   left: 10px;
-  transform: translateY(-55%);
+  transform: translateY(-40%);
   color: #8c8c8c;
   transition: all 0.3s ease;
 }
 
 .login .input-container input:focus+label,
 .login .input-container input:valid+label {
-  transform: translateY(-120%) scale(0.8);
-  color: #8c8c8c;
-}
-.signup .input-container label {
-  position: absolute;
-  top: 40%;
-  left: 10px;
-  transform: translateY(-55%);
-  color: #8c8c8c;
-  transition: all 0.3s ease;
-}
-
-.signup .input-container input:focus+label,
-.signup .input-container input:valid+label {
   transform: translateY(-100%) scale(0.8);
   color: #8c8c8c;
 }
@@ -434,10 +413,11 @@ h6 {
 }
 
 /* background for login or signup  */
-/* .backContainerLog {
+.backContainerLog {
   position: relative;
   color: white;
-} */
+  height: 100vh !important;
+}
 
 .backContainerLog::before {
   background: url(./assets/imgs/background.jpg) no-repeat top center fixed;
@@ -456,7 +436,7 @@ h6 {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100vh !important;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: -1;
 }
@@ -487,6 +467,35 @@ h6 {
     width: 100%;
   }
 
+  .secEdit {
+    margin-top: 5rem !important;
+    display: block;
+  }
+
+  .secEdit h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .main-feilds button {
+    margin: 10px 0;
+    padding: 10px 20px !important;
+  }
+
+  .main-feilds input {
+    width: 80% !important;
+  }
+
+  .main-feilds {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .secEdit>p {
+    font-size: 1.2rem;
+  }
+
   .footer {
     padding: 50px 50px;
   }
@@ -511,31 +520,33 @@ h6 {
 }
 
 *::-webkit-scrollbar-track {
-  background: rgb(166, 167, 165);
+  background: #ffffff;
 }
 
 *::-webkit-scrollbar-thumb {
   background-color: rgb(193, 17, 25);
   border-radius: 10px;
-  border: 3px solid rgb(166, 167, 165);
+  border: 3px solid #ffffff;
 }
 
 /* MoviePage.css */
 
 /* Set full viewport height */
 .movie-page {
-  height: 99vh;
+  height: 90vh;
   width: 100%;
   overflow: hidden;
   margin-right: 0;
   position: relative;
+  aspect-ratio: video;
 }
 
 /* Gradient overlay */
 .gradient-overlay {
   position: absolute;
-  top: 20%;
+  top: 5rem;
   left: 20px;
+  width: 80%;
   margin-right: 40px;
 }
 
@@ -547,28 +558,4 @@ h6 {
 .movie-poster>h1 {
   font-size: 49px;
   font-weight: 600;
-}
-
-.model-bg {
-  background: #181818;
-}
-
-/* Add this to your CSS */
-.Overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
-
-/* movie cards000 */
-
-.movie-title {
-  font-family: 'Merienda', cursive;
-}
-h1,h2,h3,h4{
-  overflow: hidden;
 }

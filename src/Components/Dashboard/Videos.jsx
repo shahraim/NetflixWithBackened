@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Info, Youtube, CalendarDays, Presentation } from 'lucide-react';
-import MovieCards from './MovieCards';
-import LogoImg from "../assets/imgs/net.png";
-import { Context } from '../Context/Context';
+import LogoImg from "../../assets/imgs/net.png";
 import Model from './Model';
-import Slider from './Slider';
 import './Slider.css'
+import { Context } from '../../Context/UserContext';
 
 const Videos = () => {
   const apiKey = 'ca258fa0adb338022b74848eb9dade0a'; // Use environment variable
@@ -56,7 +54,7 @@ const Videos = () => {
           <Model closeModal={closeModal} movie={movie} />
         </>
       )}
-      <div className="movie-page z-0" style={backgroundStyle}>
+      <div className="movie-page" style={backgroundStyle}>
         <div className="gradient-overlay">
           <div className="movie-poster">
             <div className="flex gap-3 flex-col ml-5">
@@ -116,8 +114,6 @@ const Videos = () => {
         </div>
       </div>
 
-      {/* <Slider /> */}
-      <MovieCards />
 
 
     </>

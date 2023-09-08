@@ -1,15 +1,11 @@
 import React from "react";
-import MainPage from "./Components/MainPage";
-import Login from "./Components/Login";
-import SignUp from "./Components/SignUp";
 import { Route, Routes } from "react-router-dom";
-import Videos from "./Components/Videos";
 import { ToastContainer } from "react-toastify";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Model from "./Components/Model";
-import { ContextProvider } from "./Context/Context";
-import Slider from "./Components/Slider";
+import MainPage from "./Components/Homepage/MainPage";
+import Login from "./Components/Auth/Login";
+import SignUp from "./Components/Auth/SignUp";
+import Dashboard from './Components/Dashboard/Dashboard'
+import { ContextProvider } from "./Context/UserContext";
 
 function App() {
   return (
@@ -19,9 +15,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/slider" element={<Slider />} />
-          <Route path="/videos" element={<Videos />} />
-          <Route path="/model" element={<Model />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
         <ToastContainer
           pauseOnHover={false}

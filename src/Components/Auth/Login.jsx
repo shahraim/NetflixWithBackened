@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LogoImg from "../assets/imgs/net.png";
+import LogoImg from "../../assets/imgs/net.png";
 import { Link, useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import axios from "axios";
@@ -15,13 +15,13 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    const url = "http://localhost:2000/login";
+    const url = "http://localhost:3001/login";
     console.log({ email, password });
     axios
       .post(url, { email, password })
       .then((res) => {
         toast.success("Login Successfull");
-        navigate("/videos");
+        navigate("/dashboard");
       })
       .catch((err) => {
         if (err.response && err.response.status === 401) {
@@ -92,3 +92,43 @@ const logoStyle = {
 };
 
 export default Login;
+
+// import React from "react";
+// import LogoImg from "../assets/imgs/net.png";
+// import { Link } from "react-router-dom";
+
+// function Login() {
+//   return (
+//     <div className="backContainer">
+//       <div className="overlay"></div>
+//       <div>
+//         <img src={LogoImg} alt="logo" style={logoStyle} />
+//       </div>
+//       <div className="login">
+//         <h1 style={{ color: "white" }}>Sign In</h1>
+//         <form action="/login" method="POST">
+//           <label htmlFor="email">Email</label>
+//           <input type="email" name="email" />
+//           <br />
+//           <br />
+//           <label htmlFor="password">Password</label>
+//           <input id="password" type="password" name="<PASSWORD>" />
+//           <br />
+//           <br />
+//           <button class="btn btn-primary">Submit </button>
+//           <Link to="/signup">
+//             <small>Don't have an account? Sign Up Here!</small>
+//           </Link>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Login;
+
+// const logoStyle = {
+//   height: "120px",
+//   marginTop: "-15px",
+//   marginLeft: "20px",
+// };
